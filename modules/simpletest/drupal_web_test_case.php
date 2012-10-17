@@ -1124,6 +1124,11 @@ class DrupalWebTestCase extends DrupalTestCase {
 //    drupal_install_modules($profile_details['dependencies'], TRUE);
     drupal_install_modules(drupal_verify_profile('default', 'en'));
 
+   // Enabled the user_load_cache/node_load_cache, otherwise user_save/node_save doesn't find the
+   // caching function, but user_load/node_load does.
+   drupal_install_modules(array('user_load_cache'));
+   drupal_install_modules(array('node_load_cache'));
+
 //    node_type_clear();
 
     // Install additional modules one at a time in order to make sure that the
